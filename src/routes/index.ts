@@ -1,3 +1,4 @@
+import { SuccessResponse } from '@src/utils/helpers/AppResponse';
 import asyncHandler from '@src/utils/helpers/async-handler';
 import { Request, Response, Router } from 'express';
 
@@ -33,7 +34,7 @@ router.get('/', (req: Request, res: Response) => {
 router.post(
   '/data',
   asyncHandler(async (req: Request, res: Response) => {
-    res.status(200).send('Hello, world!');
+    return new SuccessResponse().send(res);
   }),
 );
 
