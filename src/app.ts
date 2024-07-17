@@ -1,8 +1,8 @@
+import express, { NextFunction, Request, Response } from 'express';
 import loggerMiddleware from '@middlewares/logger-middleware';
 import setupSwagger from '@utils/swagger';
-import { corsConfig } from './config';
+import { corsConfig, port } from './config';
 import routes from '@routes/index';
-import express from 'express';
 import cors from 'cors';
 
 const app = express();
@@ -16,6 +16,10 @@ app.use(loggerMiddleware);
 app.use('/api', routes);
 
 // Set up Swagger
-setupSwagger(app);
+setupSwagger(app, port);
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+  res.status(404).json({ error: 'Not Found' });
+});
 
 export default app;
