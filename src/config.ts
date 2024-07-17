@@ -4,6 +4,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const port = Number(process.env.PORT) || 3000;
+export const appUrl = String(process.env.APP_URL) || 'http://localhost';
+export const appName = String(process.env.APP_NAME) || 'Express App';
+export const appVersion = String(process.env.APP_VERSION) || '1.0.0';
+
 export const corsConfig = {
   origin: process.env.CORS_ORIGIN || '*',
 };
